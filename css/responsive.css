@@ -1,0 +1,57 @@
+/* ==========================================================================
+   Responsive Design - Media Queries
+   ========================================================================== */
+
+/* For tablets and smaller desktops */
+@media (max-width: 992px) {
+    .nav-links {
+        gap: 32px; /* Reduce gap for medium screens */
+    }
+
+    .nav-links a {
+        font-size: 20px; /* Reduce font size */
+    }
+
+    .logo-container img {
+        width: 100px; /* Slightly smaller logo */
+    }
+}
+
+/* For mobile phones */
+@media (max-width: 768px) {
+    .top-flex-container {
+        padding: 12px 16px; /* Reduce padding for smaller screens */
+    }
+
+    .nav-links {
+        gap: 16px; /* Further reduce gap for small screens */
+    }
+
+    .nav-links a {
+        font-size: 16px; /* Further reduce font size */
+    }
+
+    .logo-container img {
+        width: 90px; /* Even smaller logo */
+    }
+
+    .services-container {
+        flex-direction: column; /* Stack cards vertically on mobile */
+    }
+
+    /* Responsive adjustments for the footer */
+    .footer-content {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .footer-copyright {
+        text-align: center;
+        order: 2; /* Puts copyright below social links on mobile */
+        margin-top: 20px;
+    }
+
+    .footer-social-links {
+        order: 1;
+    }
+}
