@@ -1,8 +1,21 @@
   fetch('/Temp/header/header.htm')
     .then(res => res.text())
     .then(data => {
-      document.getElementById('header').innerHTML = data;
-    });
+        document.getElementById('header').innerHTML = data;
+
+        // --- Add logic for the mobile navigation toggle ---
+        const navToggle = document.querySelector('.mobile-nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (navToggle && navLinks) {
+            navToggle.addEventListener('click', () => {
+                // Toggle a class on the body to manage the open state
+                document.body.classList.toggle('nav-open');
+                const isExpanded = document.body.classList.contains('nav-open');
+                navToggle.setAttribute('aria-expanded', isExpanded);
+            });
+        }
+    }).catch(error => console.error('Error loading header:', error));
 
     document.addEventListener('DOMContentLoaded', () => {
     // Fetch and inject the footer HTML
