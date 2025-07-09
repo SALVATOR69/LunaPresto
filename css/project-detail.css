@@ -1,0 +1,74 @@
+/* Styles for individual project detail pages */
+
+.project-header-container {
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
+    text-align: center;
+    padding: 5rem 2rem; /* Reduced padding */
+    min-height: 20vh; /* Reduced minimum height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-header-container h1 {
+    font-size: clamp(3rem, 8vw, 4.5rem); /* Larger font for the project title */
+    font-weight: 700;
+    margin: 0;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Add text shadow for readability */
+}
+
+/* Project Description Styles */
+.project-description {
+    max-width: 800px;
+    margin: 0 auto 3rem auto; /* Center it and add space below */
+    text-align: center;
+}
+
+.project-description p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.8;
+    margin: 0;
+}
+
+/* Masonry Gallery Styles */
+.masonry-gallery {
+    column-count: 3; /* Default for larger screens */
+    column-gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.masonry-item {
+    break-inside: avoid; /* Prevents items from breaking across columns */
+    margin-bottom: 1.5rem;
+    display: inline-block; /* Required for column layout */
+    width: 100%;
+}
+
+.masonry-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.masonry-item img:hover {
+    transform: scale(1.03);
+}
+
+/* Responsive adjustments for masonry */
+@media (max-width: 992px) {
+    .masonry-gallery {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 576px) {
+    .masonry-gallery {
+        column-count: 1;
+    }
+}
