@@ -1,0 +1,212 @@
+:root {
+    --primary: #003b5b;
+    --accent: #0a8;
+    --text: #333;
+    --muted: #777;
+}
+
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)),
+        url("../asset/img/services/Decor/ph.jpg") center/cover no-repeat;
+    padding: 6rem 2rem;
+    text-align: center;
+    color: white;
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 7vw, 4rem);
+    margin: 0;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 1rem auto 0 auto;
+    opacity: 0.9;
+}
+
+.section {
+    width: 100%;
+    max-width: 100%;
+    padding: 4rem 2rem;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+
+.two-col {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+}
+
+.two-col .text {
+    flex: 1 1 55%;
+}
+
+.two-col .image {
+    flex: 1 1 40%;
+}
+
+.two-col img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.section h2 {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.section p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--muted);
+}
+
+/* .why-us {
+    background-color: #f9f9f9;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.why-us ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.why-us li {
+    padding-left: 1.5rem;
+    position: relative;
+    font-size: 1.05rem;
+    color: #444;
+}
+
+.why-us li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+} */
+
+#map-container {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+}
+
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.6s ease-out;
+}
+
+.reveal-on-scroll.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.why-cards {
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.why-cards h2 {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 2.5rem;
+}
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.why-card {
+    position: relative;
+    height: 260px;
+    border-radius: 14px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: white;
+}
+
+.why-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+}
+
+.why-card .overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* 50% opacity overlay */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.why-card .overlay h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
+    color: #fff;
+}
+
+.why-card .overlay p {
+    font-size: 1rem;
+    color: #e0e0e0;
+    line-height: 1.5;
+    max-width: 90%;
+}
+
+/* Specific background images */
+.bg1 {
+    background-image: url("../asset/img/services/Aluminum/ph.jpg");
+}
+
+.bg2 {
+    background-image: url("../asset/img/services/Decor/ph.jpg");
+}
+
+.bg3 {
+    background-image: url("../asset/img/services/Lighting/ph.jpg");
+}
+
+.bg4 {
+    background-image: url("../asset/img/services/External facades/ph.jpg");
+}
+
+@media (min-width: 1300px) {
+    .section {
+        max-width: 90vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .why-card {
+        height: 200px;
+    }
+
+    .why-card .overlay h3 {
+        font-size: 1.2rem;
+    }
+
+    .why-card .overlay p {
+        font-size: 0.95rem;
+    }
+}
