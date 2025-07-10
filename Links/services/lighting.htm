@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/x-icon" href="/asset/img/LP_ico.jpg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luna Presto - Lighting</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/project-detail.css">
+    <script src="/script/loader.js"></script>
+    <script src="/script/scroll-animation.js"></script>
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <div class="project-header-container reveal-on-scroll"
+        style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/asset/img/services/Lighting/ph.jpg');">
+        <h1>Lighting</h1>
+    </div>
+
+    <main class="content-section">
+        <div class="masonry-gallery" id="gallery-container"></div>
+    </main>
+
+    <script>
+        fetch('/asset/img/services/Lighting/images.json')
+            .then(res => res.json())
+            .then(images => {
+                const container = document.getElementById('gallery-container');
+                const basePath = '/asset/img/services/Lighting/';
+                images.forEach((filename, index) => {
+                    const item = document.createElement('div');
+                    item.className = 'masonry-item';
+                    const img = document.createElement('img');
+                    img.src = `${basePath}${filename}`;
+                    img.alt = `Lighting Gallery Image ${index + 1}`;
+                    item.appendChild(img);
+                    container.appendChild(item);
+                });
+            })
+            .catch(error => {
+                console.error(error);
+                document.getElementById('gallery-container').textContent = 'Failed to load gallery images.';
+            });
+    </script>
+
+    <div id="footer"></div>
+</body>
+
+</html>

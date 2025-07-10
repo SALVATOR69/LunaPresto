@@ -5,25 +5,27 @@
     background-position: center;
     color: #ffffff;
     text-align: center;
-    padding: 5rem 2rem; /* Reduced padding */
-    min-height: 20vh; /* Reduced minimum height */
+    padding: 5rem 2rem;
+    min-height: 30vh;
+    /* More flexible for large/small screens */
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .project-header-container h1 {
-    font-size: clamp(3rem, 8vw, 4.5rem); /* Larger font for the project title */
+    font-size: clamp(2.5rem, 6vw, 4rem);
     font-weight: 700;
     margin: 0;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Add text shadow for readability */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
 }
 
-/* Project Description Styles */
+/* Project Description */
 .project-description {
     max-width: 800px;
-    margin: 0 auto 3rem auto; /* Center it and add space below */
+    margin: 0 auto 3rem auto;
     text-align: center;
+    padding: 0 1rem;
 }
 
 .project-description p {
@@ -33,25 +35,22 @@
     margin: 0;
 }
 
-/* Masonry Gallery Styles */
+/* Masonry Gallery - Flexible Columns */
 .masonry-gallery {
-    column-count: 3; /* Default for larger screens */
-    column-gap: 1.5rem;
-    margin-top: 3rem;
-}
-
-.masonry-item {
-    break-inside: avoid; /* Prevents items from breaking across columns */
-    margin-bottom: 1.5rem;
-    display: inline-block; /* Required for column layout */
-    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 3rem 1rem;
 }
 
 .masonry-item img {
     width: 100%;
-    height: auto;
-    display: block;
+    height: 200px;
+    /* uniform height */
+    object-fit: cover;
+    /* crop to fill */
     border-radius: 10px;
+    display: block;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
@@ -60,15 +59,25 @@
     transform: scale(1.03);
 }
 
-/* Responsive adjustments for masonry */
-@media (max-width: 992px) {
-    .masonry-gallery {
-        column-count: 2;
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+    .masonry-item {
+        flex: 1 1 calc(48% - 1rem);
+        max-width: calc(48% - 1rem);
     }
 }
 
-@media (max-width: 576px) {
-    .masonry-gallery {
-        column-count: 1;
+@media (max-width: 600px) {
+    .masonry-item {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    .project-header-container {
+        padding: 3rem 1rem;
+    }
+
+    .project-header-container h1 {
+        font-size: 2rem;
     }
 }
