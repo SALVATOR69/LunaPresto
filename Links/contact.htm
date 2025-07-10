@@ -9,11 +9,55 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/contact.css">
     <script src="../script/loader.js"></script>
 </head>
 
 <body>
     <div id="header"></div>
+
+    <section class="contact-wrapper">
+        <div class="contact-container">
+            <div class="contact-details">
+                <h2>Get in Touch</h2>
+                <p>We’re here to answer any questions you may have. Reach out to us and we’ll respond as soon as possible.
+                </p>
+                <ul>
+                    <li><strong>Address:</strong><br>Av. Camp de Morvedre 113,<br>12006 Castellón de la Plana, España</li>
+                    <li><strong>Email:</strong><br><a href="mailto:Info@lunapresto.com">Info@lunapresto.com</a></li>
+                    <li><strong>Phone:</strong><br><a href="tel:+34603224342">+34 603 224 342</a></li>
+                </ul>
+            </div>
+    
+            <div class="contact-form-container">
+                <h2>Send Us a Message</h2>
+                <form class="contact-form" action="https://formspree.io/f/your-form-id" method="POST">
+                    <input type="hidden" name="_subject" value="New contact form message from lunapresto.com">
+    
+                    <div class="input-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your full name" required>
+                    </div>
+    
+                    <div class="input-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="_replyto" placeholder="you@example.com" required>
+                    </div>
+    
+                    <div class="input-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" rows="6" placeholder="Write your message here..."
+                            required></textarea>
+                    </div>
+    
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+      
+      
+
     <div id="footer"></div>
 </body>
 
