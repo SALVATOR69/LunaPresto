@@ -31,9 +31,7 @@
     
             <div class="contact-form-container">
                 <h2>Send Us a Message</h2>
-                <form class="contact-form" action="https://formspree.io/f/your-form-id" method="POST">
-                    <input type="hidden" name="_subject" value="New contact form message from lunapresto.com">
-    
+                <form class="contact-form" action="../php/contact_process.php" method="POST">
                     <div class="input-group">
                         <label for="name">Full Name</label>
                         <input type="text" id="name" name="name" placeholder="Your full name" required>
@@ -41,7 +39,7 @@
     
                     <div class="input-group">
                         <label for="email">Email Address</label>
-                        <input type="email" id="email" name="_replyto" placeholder="you@example.com" required>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" required>
                     </div>
     
                     <div class="input-group">
