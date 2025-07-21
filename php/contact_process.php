@@ -1,4 +1,6 @@
 <?php
+header('Content-Type: application/json');
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Sanitize inputs
     $name = htmlspecialchars(trim($_POST["name"] ?? ''));
@@ -8,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Validate form inputs
     if (empty($name) || empty($message) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
         http_response_code(400);
-        echo "Please complete the form correctly and try again.";
+        echo json_encode(['message' => 'Please complete the form correctly and try again.']);
         exit;
     }
 
@@ -31,13 +33,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Attempt to send
     if (mail($to, $subject, $body, $headers)) {
         http_response_code(200);
-        echo "Message sent successfully.";
+        echo json_encode(['message' => 'Message sent successfully.']);
     } else {
         http_response_code(500);
-        echo "Failed to send message. Please try again later.";
+        echo json_encode(['message' => 'Failed to send message. Please try again later.']);
     }
 } else {
     http_response_code(403);
-    echo "Invalid request method.";
+    echo json_encode(['message' => 'Invalid request method.']);
 }
 ?>
