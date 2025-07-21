@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     // Setup email
-    $to = "bangoola1234@gmail.com";
+    $to = "lunaamig@lunapresto.com";
     $subject = "New Contact from $name";
     $body = "
         <strong>Name:</strong> $name<br>
@@ -24,14 +24,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $message
     ";
 
-    // Headers for HTML email
+    // SMTP email headers
     $headers = "MIME-Version: 1.0\r\n";
     $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-    $headers .= "From: $name <$email>\r\n";
+    $headers .= "From: no-reply@lunapresto.com\r\n";
     $headers .= "Reply-To: $email\r\n";
+    $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
+
+    // Additional parameters to enforce envelope sender
+    $params = "-fno-reply@lunapresto.com";
 
     // Attempt to send
-    if (mail($to, $subject, $body, $headers)) {
+    if (mail($to, $subject, $body, $headers, $params)) {
         http_response_code(200);
         echo json_encode(['message' => 'Message sent successfully.']);
     } else {

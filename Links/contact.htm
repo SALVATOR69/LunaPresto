@@ -20,15 +20,17 @@
         <div class="contact-container">
             <div class="contact-details">
                 <h2>Get in Touch</h2>
-                <p>We’re here to answer any questions you may have. Reach out to us and we’ll respond as soon as possible.
+                <p>We’re here to answer any questions you may have. Reach out to us and we’ll respond as soon as
+                    possible.
                 </p>
                 <ul>
-                    <li><strong>Address:</strong><br>Av. Camp de Morvedre 113,<br>12006 Castellón de la Plana, España</li>
-                    <li><strong>Email:</strong><br><a href="mailto:Info@lunapresto.com">Info@lunapresto.com</a></li>
+                    <li><strong>Address:</strong><br>Av. Camp de Morvedre 113,<br>12006 Castellón de la Plana, España
+                    </li>
+                    <li><strong>Email:</strong><br><a href="mailto:Info@lunapresto.com">lunaamig@lunapresto.com</a></li>
                     <li><strong>Phone:</strong><br><a href="tel:+34603224342">+34 603 224 342</a></li>
                 </ul>
             </div>
-    
+
             <div class="contact-form-container">
                 <h2>Send Us a Message</h2>
                 <form class="contact-form" action="../php/contact_process.php" method="POST">
@@ -36,25 +38,25 @@
                         <label for="name">Full Name</label>
                         <input type="text" id="name" name="name" placeholder="Your full name" required>
                     </div>
-    
+
                     <div class="input-group">
                         <label for="email">Email Address</label>
                         <input type="email" id="email" name="email" placeholder="you@example.com" required>
                     </div>
-    
+
                     <div class="input-group">
                         <label for="message">Your Message</label>
                         <textarea id="message" name="message" rows="6" placeholder="Write your message here..."
                             required></textarea>
                     </div>
-    
+
                     <button type="submit">Send Message</button>
                 </form>
             </div>
         </div>
     </section>
-      
-      
+
+
 
     <div id="footer"></div>
 
@@ -75,21 +77,21 @@
                     method: 'POST',
                     body: formData
                 })
-                .then(response => response.json().then(data => ({ ok: response.ok, data })))
-                .then(({ ok, data }) => {
-                    alert(data.message); // Show the message from the JSON response
-                    if (ok) {
-                        contactForm.reset(); // Reset form only on success
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('An unexpected error occurred. Please try again.');
-                })
-                .finally(() => {
-                    submitButton.textContent = originalButtonText;
-                    submitButton.disabled = false;
-                });
+                    .then(response => response.json().then(data => ({ ok: response.ok, data })))
+                    .then(({ ok, data }) => {
+                        alert(data.message); // Show the message from the JSON response
+                        if (ok) {
+                            contactForm.reset(); // Reset form only on success
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('An unexpected error occurred. Please try again.');
+                    })
+                    .finally(() => {
+                        submitButton.textContent = originalButtonText;
+                        submitButton.disabled = false;
+                    });
             });
         });
     </script>
