@@ -2,15 +2,15 @@
 <html lang="en">
 
 <head>
-    <link rel="icon" type="image/x-icon" href="../asset/img/LP_ico.jpg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luna Presto-contact</title>
+    <title>Luna Presto - Contact</title>
+    <link rel="icon" type="image/x-icon" href="../asset/img/LP_ico.jpg">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/responsive.css">
     <link rel="stylesheet" href="../css/contact.css">
-    <script src="../script/loader.js"></script>
+    <script src="../script/loader.js" defer></script>
 </head>
 
 <body>
@@ -18,20 +18,21 @@
 
     <section class="contact-wrapper">
         <div class="contact-container">
+            <!-- Contact Info -->
             <div class="contact-details">
                 <h2>Get in Touch</h2>
                 <p>We’re here to answer any questions you may have. Reach out to us and we’ll respond as soon as
-                    possible.
-                </p>
+                    possible.</p>
                 <ul>
                     <li><strong>Address:</strong><br>Av. Camp de Morvedre 113,<br>12006 Castellón de la Plana, España
                     </li>
-                        <li><strong>Email:</strong><br><a href="mailto:lunaamig@lunapresto.com">lunaamig@lunapresto.com</a>
-                        </li>
+                    <li><strong>Email:</strong><br><a href="mailto:contact@lunapresto.com">contact@lunapresto.com</a>
+                    </li>
                     <li><strong>Phone:</strong><br><a href="tel:+34603224342">+34 603 224 342</a></li>
                 </ul>
             </div>
 
+            <!-- Contact Form -->
             <div class="contact-form-container">
                 <h2>Send Us a Message</h2>
                 <form class="contact-form" action="../php/contact_process.php" method="POST">
@@ -57,41 +58,36 @@
         </div>
     </section>
 
-
-
     <div id="footer"></div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const contactForm = document.querySelector('.contact-form');
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
 
             contactForm.addEventListener('submit', function (e) {
-                e.preventDefault(); // Prevent the default form submission
+                e.preventDefault();
 
-                const formData = new FormData(this);
-                const submitButton = this.querySelector('button[type="submit"]');
-                const originalButtonText = submitButton.textContent;
-                submitButton.textContent = 'Sending...';
+                const formData = new FormData(contactForm);
                 submitButton.disabled = true;
+                submitButton.textContent = 'Sending...';
 
-                fetch('../php/contact_process.php', {
+                fetch(contactForm.action, {
                     method: 'POST',
                     body: formData
                 })
-                    .then(response => response.json().then(data => ({ ok: response.ok, data })))
-                    .then(({ ok, data }) => {
-                        alert(data.message); // Show the message from the JSON response
-                        if (ok) {
-                            contactForm.reset(); // Reset form only on success
-                        }
+                    .then(response => response.text().then(text => ({ ok: response.ok, message: text })))
+                    .then(({ ok, message }) => {
+                        alert(message);
+                        if (ok) contactForm.reset();
                     })
-                    .catch(error => {
-                        console.error('Error:', error);
+                    .catch(() => {
                         alert('An unexpected error occurred. Please try again.');
                     })
                     .finally(() => {
-                        submitButton.textContent = originalButtonText;
                         submitButton.disabled = false;
+                        submitButton.textContent = originalText;
                     });
             });
         });
